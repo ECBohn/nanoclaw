@@ -24,7 +24,6 @@ RUN apt-get update && apt-get install -y \
     libxshmfence1 \
     curl \
     git \
-    sqlite3 \
     && rm -rf /var/lib/apt/lists/*
 
 # Set Chromium path for agent-browser

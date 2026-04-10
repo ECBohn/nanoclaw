@@ -26,6 +26,7 @@ import {
 } from './container-runtime.js';
 import { OneCLI } from '@onecli-sh/sdk';
 import { validateAdditionalMounts } from './mount-security.js';
+import { getAgentApiKey } from './agent-api-keys.js';
 import { RegisteredGroup } from './types.js';
 
 const onecli = new OneCLI({ url: ONECLI_URL });
@@ -246,6 +247,14 @@ async function buildContainerArgs(
       { containerName },
       'OneCLI gateway not reachable — container will have no credentials',
     );
+  }
+
+  // Inject per-agent YELD_API_KEY from external config
+  if (agentIdentifier) {
+    const apiKey = getAgentApiKey(agentIdentifier);
+    if (apiKey) {
+      args.push('-e', `YELD_API_KEY=${apiKey}`);
+    }
   }
 
   // Runtime-specific args for host gateway resolution

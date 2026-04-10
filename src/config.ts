@@ -37,6 +37,12 @@ export const SENDER_ALLOWLIST_PATH = path.join(
   'nanoclaw',
   'sender-allowlist.json',
 );
+export const AGENT_API_KEYS_PATH = path.join(
+  HOME_DIR,
+  '.config',
+  'nanoclaw',
+  'agent-api-keys.json',
+);
 export const STORE_DIR = path.resolve(PROJECT_ROOT, 'store');
 export const GROUPS_DIR = path.resolve(PROJECT_ROOT, 'groups');
 export const DATA_DIR = path.resolve(PROJECT_ROOT, 'data');

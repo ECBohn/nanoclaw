@@ -37,12 +37,17 @@ export function loadAgentApiKeys(): AgentApiKeysConfig | null {
     const config = JSON.parse(content) as AgentApiKeysConfig;
 
     if (!config.keys || typeof config.keys !== 'object') {
-      throw new Error('"keys" must be an object mapping agent identifiers to API keys');
+      throw new Error(
+        '"keys" must be an object mapping agent identifiers to API keys',
+      );
     }
 
     cached = config;
     logger.info(
-      { path: AGENT_API_KEYS_PATH, agentCount: Object.keys(config.keys).length },
+      {
+        path: AGENT_API_KEYS_PATH,
+        agentCount: Object.keys(config.keys).length,
+      },
       'Agent API keys loaded',
     );
     return cached;
